@@ -2,6 +2,10 @@ class npc():
     def __init__(self, name):
         self.name = name
 
+class enemy(npc):
+    def __init__(self, name, health, attacks, stamina):
+        super().__init__(name)
+
 class seller(npc):
     def __init__(self, name, trading, products):
         super().__init__(name)
