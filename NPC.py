@@ -3,7 +3,7 @@ class npc():
         self.name = name
 
 class enemy(npc):
-    def __init__(self, name, health, attacks, stamina):
+    def __init__(self, name, health, attacks, stamina, technique):
         super().__init__(name)
 
 class seller(npc):
