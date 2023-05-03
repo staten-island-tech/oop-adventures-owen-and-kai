@@ -1,20 +1,27 @@
+def tutorial(tutorial_question, main_menu):
+    tutorial_question = input("Tutorial  Choices: Back")
+    while tutorial_question == "Back":
+        main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
+    else:
+        print("That's not a choice kid... ")
+        tutorial_question = input("Tutorial  Choices: Back")
+
+def credits(credits_question, main_menu):
+    credits_question = input("Credits  Choices: Back")
+    while credits_question == "Back":
+        main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
+    else:
+        print("That's not a choice kid... ")
+        credits_question = input("Tutorial  Choices: Back")
+
 main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
-if main_menu == "Credits":
-    credits = input("Credits  Choices: Back ")
-    if credits == "Back":
-        main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
-    else:
-        print("That's not a choice kid... ")
-        credits = ("Credits  Choices: Back ")
-if main_menu == "Tutorial":
-    tutorial = input("Tutorial  Choices: Back ")
-    if tutorial == "Back":
-        main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
-    else:
-        print("That's not a choice kid... ")
-        tutorial = input("Tutorial  Choices: Back ")
-if main_menu == "Play":
+while main_menu == "Credits":
+    credits()
+while main_menu == "Tutorial":
+    tutorial()
+while main_menu == "Play":
     print("Here we go! ")
+    break
 else:
     print("That's not a choice kid... ")
     main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
