@@ -6,20 +6,22 @@ while True:
         if credits == 'Back':
             main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
             continue
-        
+
         else:
             print("That's not a choice kid... ")
-            main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
+            credits = input("Credits  Choices: Back ")
             continue
-
+        
     if main_menu == "Tutorial":
         tutorial = input("Tutorial  Choices: Back ")
         if tutorial == 'Back':
             main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
             continue
+
         else:
             print("That's not a choice kid... ")
-            main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
+            tutorial = input("Tutorial  Choices: Back ")
+            continue
 
     if main_menu == "Play":
         print("Here we go! ")
