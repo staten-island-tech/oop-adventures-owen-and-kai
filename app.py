@@ -10,7 +10,7 @@ while True:
         else:
             print("That's not a choice kid... ")
             credits = input("Credits  Choices: Back ")
-            continue
+        continue
         
     if main_menu == "Tutorial":
         tutorial = input("Tutorial  Choices: Back ")
@@ -21,7 +21,7 @@ while True:
         else:
             print("That's not a choice kid... ")
             tutorial = input("Tutorial  Choices: Back ")
-            continue
+        continue
 
     if main_menu == "Play":
         print("Here we go! ")
@@ -30,7 +30,7 @@ while True:
     else:
         print("That's not a choice kid... ")
         main_menu = input("Main Menu  Choices: Play/Credits/Tutorial ")
-        continue
+    continue
 
 player_customization_screen = input("Welcome to the player customization screen, here you will make your own custom player that will progress through the story. Please refrain from using any personal information as we will not take any responsibility if your information gets leaked, thank you.  Choices: Continue ")
 
