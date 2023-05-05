@@ -71,7 +71,7 @@ while True:
         else:
             print("That's not a choice kid... ")
             backstory1 = input("As a child, you have always dreamed of boxing on the world stage. Every pivot of the foot, every swing of the arms, every movement you see on TV is calculated and is contributed to the finishing blow.  Choices: Continue ")
-                
+            
         if backstory2 == "Continue":
             backstory3 = input("You want to be like them. You want to fight on the world stage. However, you know that it isn't possible for someone like you, so you end up only watching your favirote stars from behind the Tv screen.  Choices: Continue ")
 
