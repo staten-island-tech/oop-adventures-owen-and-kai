@@ -106,7 +106,7 @@ while True:
     if filler == "Continue":
         scene1 = input("BOOM! BANG! POW! The sounds of fists colliding in the gym is almost like a melody. You're in your own corner, concentrating on your own bag.  Choices: Continue ")
         if scene1 == "Continue":
-            scene2 = input("")
+            scene2 = input("n")
             
         else:
             print("That's not a choice kid... ")
