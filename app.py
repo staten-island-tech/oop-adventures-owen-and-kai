@@ -68,7 +68,7 @@ while True:
         else:
             print("That's not a choice kid... ")
             continue
-        
+                
         if backstory2 == "Continue":
             backstory3 = input("You want to be like them. You want to fight on the world stage. However, you know that it isn't possible for someone like you, so you end up only watching your favirote stars from behind the Tv screen.  Choices: Continue ")
 
@@ -106,8 +106,43 @@ while True:
     if filler == "Continue":
         scene1 = input("BOOM! BANG! POW! The sounds of fists colliding in the gym is almost like a melody. You're in your own corner, concentrating on your own bag.  Choices: Continue ")
         if scene1 == "Continue":
-            scene2 = input("")
+            scene1_pt2 = input("Jab. Straight to the body. Left feint. Left hook to the body followed by another one to the head. Endless amounts of combos are forming in your head, and you continue to beat the bag before you to a pulp.  Choices: Continue ")
             
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt2 == "Continue":
+            scene1_pt3 = input("If any outsider were to look at everyone inside the gym, they would easily see that you were much more talented then the rest. However, the gym coach is no such outsider. Shawn Wilson, in his mid 50s, used to do some boxing himself. If he were to stop being so naive and actually look at you for a split second he would be able to see that you easily outshone everyone in the gym.  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt3 == "Continue":
+            scene1_pt4 = input("Instead, he diverts his attention to someone else, someone that is nothing more than a pebble in your way to you: John Parksinson, the pride of the Wilson Boxing Gym.  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt4 == "Continue":
+            scene1_pt5 = input("As you continue to destroy your bag, you take glance at him from across the room. You see the coach firing him up as he fires some combos onto the bag. Two jabs followed by a striahgt and a hook. Easily one of the most basic combos in boxing and he manages to mess up on so many things. He forgets the pivot of his foot, the extending of his shoulders, and his form is terrible. The whole gym knows this, but no one can say anything as what makes him shine brighter than the rest of us, as the coach says, is his physique. 6 ft 1 weighing at 210 pounds of pure muscle, he was a tank to be reckoned with. Last person that ever fought him was sent to the hospital with multiple fractures all acrosss the body. After that, no one would even try to fight him in our area, so he's stuck with only punching a bag.  Choices: Continue ")
+        
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt5 == "Continue":
+            scene1_pt6 = input("You shake your head and continue to punch the bag; you decide you shouldn't let your emotions get into your head. You had an actual goal to reach while that meathead had nothing. As your punching your bag you see a massive shadow consume all the light around you, and you look around to see, the man himself, John, towering over you with a vein bulging on his head.  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt6 == "Continue":
+            break
+
         else:
             print("That's not a choice kid... ")
             continue
@@ -115,3 +150,14 @@ while True:
     else:
         print("That's not a choice kid... ")
         continue
+
+while True:
+    if scene1_pt6 == "Continue":
+        scene1_dialogue1 = input("John: wHat arE yOu lOokInG aT ya sQuAb?! wHy'd yoU LoOk At mE iN ThAt dIsGusTeD wAy?! WaNt mE to mEsS yoU uP?!  Choices: 1. I wasn't looking at you. / 2. What am I looking at? Of course it's that blob of a brain that you have! All that muscle's not going to help you in a fight if it belongs to that retard of a brain you have. ")
+    
+    else:
+        print("That's not a choice kid... ")
+        continue
+
+    if scene1_dialogue1 == "1":
+        scene1_pt7 = input("")
