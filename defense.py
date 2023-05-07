@@ -17,4 +17,3 @@ Block_Left_Hook = Defend('Block Left Hook')
 Block_Right_Hook = Defend('Block Right Hook')
 
 Block_Right_Uppercut = Defend('Block Right Uppercut')
-print(Block_Jab)

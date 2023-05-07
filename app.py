@@ -173,17 +173,32 @@ while True:
             continue
 
         if scene1_dialogue2 == "Continue":
-            scene1_pt8 = input("")
+            scene1_pt8 = input("John cranks back his hand and closes it into a fist into what seems to be a hook. It's slow, anyone could easily dodge it. However, somehow you're unable to move; the pressure being emitted from him is too strong.  Choices: Continue ")
 
         else:
             print("That's not a choice kid... ")
             continue
 
+        if scene1_pt8 == "Continue":
+            scene1_pt9 = input("You flinch and you mentally get ready for the pain that is about to come. However, Coach Wilson suddenly appears between the two of you and puts a hand on John's shoulder.  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+        
+        if scene1_pt9 == "Continue":
+            scene1_dialogue3 = input("")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+
     if scene1_dialogue_choice1 == "2":
         scene1_dialogue1 = input(f"{player_story_name}: What am I looking at? Of course it's that blob of a brain that you have! All that muscle's not going to help you in a fight if it belongs to that retard of a brain you have.  Choices: Coninue ")
 
         if scene1_dialogue1 == "Continue":
-            scene1_pt7 = input("You don't know why these words left your mouth, but it felt good. Everyone is looking at you in shock and you feel power rushing through your veins as adrenaline rushes through your entire body. However, John is visibly fuming as the vein in his head looked like it was about to burst.  Choices: Continue")
+            scene1_pt7 = input("You don't know why these words left your mouth, but it felt good. Everyone is looking at you in shock and you feel power rushing through your veins as adrenaline rushes through your entire body. However, John is visibly fuming as the vein in his head looked like it was about to burst.  Choices: Continue ")
 
         else:
             print("That's not a choice kid... ")
@@ -197,7 +212,21 @@ while True:
             continue
 
         if scene1_dialogue2 == "Continue":
-            scene1_pt8 = input("")
+            scene1_pt8 = input("Before you can react John tucks in his hand and hits you with a uppercut straight to the chin. You are knocked straight off your feet; his punch felt like a hammer knocking you from between the world of the living and the dead. You are on the ground, but to everyones surprise, you spit out two of your teeth and, instead of crumbling in fear, you laugh and look him staight in the eyes.  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt8 == "Continue":
+            scene1_pt9 = input("At first, John is shocked. However, that shock soon turns into anger as his face turns a very visible red and he charges at you to give you a few more blows. As you are about to get up and start fighting John right then and there, Coach Wilson suddenly rushes behind John and holds him back.  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt9 == "Continue":
+            scene1_dialogue3 = input("")
 
         else:
             print("That's not a choice kid... ")
