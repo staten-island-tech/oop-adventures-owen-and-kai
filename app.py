@@ -154,10 +154,10 @@ while True:
 while True:
     if scene1_pt6 == "Continue":
         scene1_dialogue1 = input("John: wHat arE yOu lOokInG aT ya sQuAb?! wHy'd yoU LoOk At mE iN ThAt dIsGusTeD wAy?! WaNt mE to mEsS yoU uP?!  Choices: 1. I wasn't looking at you. / 2. What am I looking at? Of course it's that blob of a brain that you have! All that muscle's not going to help you in a fight if it belongs to that retard of a brain you have. ")
-    
-    else:
-        print("That's not a choice kid... ")
-        continue
 
     if scene1_dialogue1 == "1":
         scene1_pt7 = input("")
+
+    else:
+        print("That's not a choice kid... ")
+        continue
