@@ -153,10 +153,55 @@ while True:
 
 while True:
     if scene1_pt6 == "Continue":
-        scene1_dialogue1 = input("John: wHat arE yOu lOokInG aT ya sQuAb?! wHy'd yoU LoOk At mE iN ThAt dIsGusTeD wAy?! WaNt mE to mEsS yoU uP?!  Choices: 1. I wasn't looking at you. / 2. What am I looking at? Of course it's that blob of a brain that you have! All that muscle's not going to help you in a fight if it belongs to that retard of a brain you have. ")
+        scene1_dialogue_choice1 = input("John: wHat arE yOu lOokInG aT ya sQuAb?! wHy'd yoU LoOk At mE iN ThAt dIsGusTeD wAy?! WaNt mE to mEsS yoU uP?!  Choices: 1. I wasn't looking at you. / 2. What am I looking at? Of course it's that blob of a brain that you have! All that muscle's not going to help you in a fight if it belongs to that retard of a brain you have. ")
 
-    if scene1_dialogue1 == "1":
-        scene1_pt7 = input("")
+    if scene1_dialogue_choice1 == "1":
+        scene1_dialogue1 = input(f"{player_story_name}: I wasn't looking at you.  Choices: Continue ")
+
+        if scene1_dialogue1 == "Continue":
+            scene1_pt7 = input("You don't know why these words left your mouth; only a few seconds ago you were thinking you would be able to beat John easily. However, now that he was in front of you in person, you feel almost like a mere bug in front of the pressure of his presence.  Choices: Continue")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt7 == "Continue":
+            scene1_dialogue2 = input("John: oH YeS yOu WerE. NoW lEt mE BeAt yoU tO A PulP. I diDn'T lIkE yOu tHE DaY I SAw YoU.  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_dialogue2 == "Continue":
+            scene1_pt8 = input("")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+    if scene1_dialogue_choice1 == "2":
+        scene1_dialogue1 = input(f"{player_story_name}: What am I looking at? Of course it's that blob of a brain that you have! All that muscle's not going to help you in a fight if it belongs to that retard of a brain you have.  Choices: Coninue ")
+
+        if scene1_dialogue1 == "Continue":
+            scene1_pt7 = input("You don't know why these words left your mouth, but it felt good. Everyone is looking at you in shock and you feel power rushing through your veins as adrenaline rushes through your entire body. However, John is visibly fuming as the vein in his head looked like it was about to burst.  Choices: Continue")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt7 == "Continue":
+            scene1_dialogue2 = input("John: HoW dARe yOU SaY tHaT tO mE!  Choices: Continue")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_dialogue2 == "Continue":
+            scene1_pt8 = input("")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
 
     else:
         print("That's not a choice kid... ")

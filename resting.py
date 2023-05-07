@@ -1,6 +1,10 @@
-class Rest:
-    def __init__(self, name, stamina_regained):
+class Move:
+    def __init__(self, name):
         self.name = name
+
+class Rest(Move):
+    def __init__(self, name, stamina_regained):
+        super().__init__(name)
         self.stamina_regained = stamina_regained
     def __str__(self):
         return f"{self.name}, {self.stamina_regained}"
