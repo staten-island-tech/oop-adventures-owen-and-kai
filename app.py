@@ -187,12 +187,25 @@ while True:
             continue
         
         if scene1_pt9 == "Continue":
-            scene1_dialogue3 = input("")
+            scene1_dialogue3 = input("Coach Wilson: Alright now Johnny, we don't want to waste your punches on some weakling like him.  Choices: Continue ")
 
         else:
             print("That's not a choice kid... ")
             continue
 
+        if scene1_dialogue3 == "Continue":
+            scene1_dialogue4 = input("John: wElL, aT lEAsT leT mE BEat HiM uP iN thE RiNg!  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue 
+        
+        if scene1_dialogue4 == "Continue":
+            scene1_dialogue5 = input("")
+
+        else:
+            print("That's not a choice kid... ")
+            continue              
 
     if scene1_dialogue_choice1 == "2":
         scene1_dialogue1 = input(f"{player_story_name}: What am I looking at? Of course it's that blob of a brain that you have! All that muscle's not going to help you in a fight if it belongs to that retard of a brain you have.  Choices: Coninue ")
@@ -205,7 +218,7 @@ while True:
             continue
 
         if scene1_pt7 == "Continue":
-            scene1_dialogue2 = input("John: HoW dARe yOU SaY tHaT tO mE!  Choices: Continue")
+            scene1_dialogue2 = input("John: HoW dARe yOU SaY tHaT tO mE!  Choices: Continue ")
 
         else:
             print("That's not a choice kid... ")
@@ -226,11 +239,47 @@ while True:
             continue
 
         if scene1_pt9 == "Continue":
-            scene1_dialogue3 = input("")
+            scene1_dialogue3 = input("Coach Wilson: Woah there, Johnny boy, cooldown, don't let this kid here provoke you. We don't want any trouble.  Choices: Continue ")
 
         else:
             print("That's not a choice kid... ")
             continue
+
+        if scene1_dialogue3 == "Continue":
+            scene1_dialogue4 = input("John: ThEn aT lEAsT lEt Me beAT hIM iN tHe rInG!  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_dialogue4 == "Continue":
+            scene1_dialogue5 = input(f"Coach Wilson: Alright, alright, {player_story_name}, get your gloves on and get in the ring, your fighting.  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_dialogue5 == "Continue":
+            scene1_dialogue6 = input(f"{player_story_name}: Whatever you say coach. I've been waiting for this moment for some time.  Choices: Continue")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_dialogue6 == "Continue":
+            scene1_pt10 = input("This is it, the chance you've been waiting for, the chance to be able to prove yourself in front of everyone in the gym. Although your mouth is starting to throb from the punch you received from John, your heart is filled with all sorts of feelings ranging from excitment to anger. However, you put on your gloves and step into the ring; this could be the life changing moment that you've always needed...  Choices: Continue ")
+
+        else:
+            print("That's not a choice kid... ")
+            continue
+
+        if scene1_pt10 == "Continue":
+            print("You start to enter the ring... ")
+            break
+
+        else:
+            print("That's not a choice kid... ")
+            continue        
 
     else:
         print("That's not a choice kid... ")
