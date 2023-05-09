@@ -25,13 +25,23 @@ class final_boss(enemy):
         return f"{self.name},{self.health},{self.attacks},{self.samina},{self.technique},{self.special_move}"
 final_round_boss = final_boss("Jaquavious Dontavious Requise III", "5000",'150','1000','25', '0.05')
 class seller(npc):
-    def __init__(self, name, trading, product1, product2):
+    def __init__(self, name, trading, product1, product2, dialogue):
         super().__init__(name)
         self.trading = trading
         self.product1 = product1
         self.product2 = product2
+        self.dialogue = dialogue
     def __str__(self):
         return f"{self.name},{self.trading},{self.products}"
 
-Glove_seller = seller('David Gloveman','money','gloves','steroids')
-black_market_dealer = seller('Miguel Ángel Félix Gallardo', 'money', 'sepecial_candy')
+Glove_seller = seller('David Gloveman','money','gloves','steroids','talking')
+black_market_dealer = seller('Miguel Ángel Félix Gallardo', 'money', 'sepecial_candy','N/A','talking')
+class friendly_npc(npc):
+    def __init__(self, name, action, dialogue):
+        super().__init__(name)
+        self.action = action
+        self.dialogue = dialogue
+def __str__(self):
+    return f"{self.name},{self.action},{self.dialogue}"
+Coach = friendly_npc('Shawn Wilson','training','talking/asking for advice')
+The_miracle_builder = friendly_npc('William Smith','building','talking')
