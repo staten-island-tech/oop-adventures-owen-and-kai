@@ -16,6 +16,6 @@ Straight = Attack('Straight', '20', '30')
 
 Left_Hook = Attack('Left Hook', '25', '15')
 
-Right_hook = Attack('Right Hook', '65', '45')
+Right_Hook = Attack('Right Hook', '65', '45')
 
 Right_Uppercut = Attack('Right Uppercut', '80', '60')

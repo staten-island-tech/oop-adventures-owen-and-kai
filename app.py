@@ -1,3 +1,13 @@
+from attacks import Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut
+from defense import Block_Jab, Block_Straight, Block_Left_Hook, Block_Right_Hook, Block_Right_Uppercut
+from resting import Relax_Muscles, Put_Guard_Down, Full_Body_Relaxation
+from NPC import Tutorial_Boss, Round_1_Boss, Round_2_Boss, Round_3_Boss, Quarter_Finals_Boss, Semi_Finals_Boss, Final_Round_Boss, Glove_seller, Black_Market_Dealer, Coach, The_Miracle_Builder
+
+player_health = 500
+player_strength = 10
+player_stamina = 100
+player_technique = 5
+
 main_menu = input("Kai and Owen Productions Presents: Punch-A-Looza!  Choices: Play/Credits/Tutorial ")
 
 while True:
@@ -311,3 +321,10 @@ while True:
         print("That's not a choice kid... ")
         continue
 
+while True:
+    print("Refree: Okay gentlemen, you should know the rules by know, protect yourself at all times, and attack at any chance you got. I don't wanna see anything dirty. ")
+    ready = input("Are you ready? Choices: Y/N ")
+    if ready == "Y":
+        print("Fight! ")
+    if ready == "N":
+        print("Thank you for playing our game! ")
