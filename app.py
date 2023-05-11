@@ -5,7 +5,7 @@ from NPC import Tutorial_Boss, Round_1_Boss, Round_2_Boss, Round_3_Boss, Quarter
 
 stat_point = None
 
-player_dexterity_points = [stat_point]
+player_dexterity_points = []
 player_strength_points = []
 player_stamina_points = []
 player_technique_points = []
@@ -14,7 +14,6 @@ player_health = 500 + len(player_dexterity_points) * 10
 player_strength = 10 + len(player_strength_points) * 1
 player_stamina = 100 + len(player_stamina_points) * 5
 player_technique = 5 + len(player_technique_points) * 1
-print(player_health)
 
 main_menu = input("Kai and Owen Productions Presents: Punch-A-Looza!  Choices: Play/Credits/Tutorial ")
 
@@ -333,6 +332,8 @@ while True:
     print("Refree: Okay gentlemen, you should know the rules by know, protect yourself at all times, and attack at any chance you got. I don't wanna see anything dirty. ")
     ready = input("Are you ready? Choices: Y/N ")
     if ready == "Y":
-        print("Fight! ")
+        print("Ready. Set. BOX! ")
+        while player_health and Tutorial_Boss != 0:
+            
     if ready == "N":
         print("Thank you for playing our game! ")
