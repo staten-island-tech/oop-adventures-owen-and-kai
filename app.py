@@ -3,10 +3,18 @@ from defense import Block_Jab, Block_Straight, Block_Left_Hook, Block_Right_Hook
 from resting import Relax_Muscles, Put_Guard_Down, Full_Body_Relaxation
 from NPC import Tutorial_Boss, Round_1_Boss, Round_2_Boss, Round_3_Boss, Quarter_Finals_Boss, Semi_Finals_Boss, Final_Round_Boss, Glove_seller, Black_Market_Dealer, Coach, The_Miracle_Builder
 
-player_health = 500
-player_strength = 10
-player_stamina = 100
-player_technique = 5
+stat_point = None
+
+player_dexterity_points = [stat_point]
+player_strength_points = []
+player_stamina_points = []
+player_technique_points = []
+
+player_health = 500 + len(player_dexterity_points) * 10
+player_strength = 10 + len(player_strength_points) * 1
+player_stamina = 100 + len(player_stamina_points) * 5
+player_technique = 5 + len(player_technique_points) * 1
+print(player_health)
 
 main_menu = input("Kai and Owen Productions Presents: Punch-A-Looza!  Choices: Play/Credits/Tutorial ")
 
