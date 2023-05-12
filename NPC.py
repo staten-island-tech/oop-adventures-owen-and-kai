@@ -23,7 +23,7 @@ class final_boss(enemy):
         super().__init__(name, health, attacks, stamina, technique)
         self.special_move = special_move
         def __str__(self):
-            return f"{self.name},{self.health},{self.attacks},{self.samina},{self.technique},{self.special_move}"
+            return f"{self.name},{self.health},{self.attacks},{self.stamina},{self.technique},{self.special_move}"
 Final_Round_Boss = final_boss("Jaquavious Dontavious Requise III", "5000",'150','1000','25', '0.05')
 class seller(npc):
     def __init__(self, name, trading, product1, product2, dialogue):
