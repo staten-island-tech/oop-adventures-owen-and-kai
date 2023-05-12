@@ -56,11 +56,15 @@ while True:
         player_story_age = player_age
         player_gender = input("What is your gender? M/F ")
         if player_gender == "M":
-            player_pronouns = "He"
+            player_pronoun1 = "He"
+            player_pronoun2 = "Him"
+            player_pronoun3 = "His"
             break
 
         if player_gender == "F":
-            player_pronouns = "She"
+            player_pronoun1 = "She"
+            player_pronoun2 = "Her"
+            player_pronoun3 = "Hers"
             break
 
         else:
@@ -334,6 +338,38 @@ while True:
     if ready == "Y":
         print("Ready. Set. BOX! ")
         while player_health and Tutorial_Boss != 0:
-            
+            turn = input("What move do you want to do?  Choices: Attack/Defend/Rest ")
+            if turn == "Attack":
+                attack_move = input("What kind of attack do you want to use?  Choices: Jab/Straight/Left Hook/Right Hook/Right Uppercut ")
+                if attack_move == "Jab":
+                    print(f"{player_story_name} goes for a beautiful jab! ")
+                if attack_move == "Straight":
+                    print(f"{player_story_name} goes for a beautiful straight! ")
+                if attack_move == "Left Hook":
+                    print(f"{player_story_name} goes for a beautiful left hook! ")
+                if attack_move == "Right Hook":
+                    print(f"{player_story_name} goes for a beautiful right hook! ")
+                if attack_move == "Right Uppercut":
+                    print(f"{player_story_name} goes for a beautiful right uppercut! ")
+            if turn == "Defend":
+                defend_move = input("What kind of defend do you want to use?  Choices: Block Jab/Block Straight/Block Left Hook/Block Right Hook/Block Right Uppercut ")
+                if defend_move == "Block Jab":
+                    print(f"{player_story_name} tries to block a jab! ")
+                if defend_move == "Block Straight":
+                    print(f"{player_story_name} tries to block a straight! ")
+                if defend_move == "Block Left Hook":
+                    print(f"{player_story_name} tries to block a left hook! ")
+                if defend_move == "Block Right Hook":
+                    print(f"{player_story_name} tries to block a right hook! ")
+                if defend_move == "Block Right Uppercut":
+                    print(f"{player_story_name} tries to block a right uppercut! ")
+            if turn == "Rest":
+                rest_move = input("What kind of rest do you want to use?  Choices: Relax Muscles/Put Guard Down/Full Body Relaxation ")
+                if rest_move == "Relax Muscles":
+                    print(f"{player_story_name} seems to be relaxing {player_pronoun3.lower} muscles! ")
+                if rest_move == "Put Guard Down":
+                    print(f"{player_story_name} seems to be relaxing putting {player_pronoun3.lower} guard down! ")
+                if rest_move == "Full Body Relaxation":
+                    print(f"{player_story_name} seems to be relaxing fully relaxing {player_pronoun3.lower} body! ")
     if ready == "N":
         print("Thank you for playing our game! ")
