@@ -1,3 +1,4 @@
+import random
 from attacks import Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut
 from defense import Block_Jab, Block_Straight, Block_Left_Hook, Block_Right_Hook, Block_Right_Uppercut
 from resting import Relax_Muscles, Put_Guard_Down, Full_Body_Relaxation
@@ -14,6 +15,9 @@ player_health = 500 + len(player_dexterity_points) * 10
 player_strength = 10 + len(player_strength_points) * 1
 player_stamina = 100 + len(player_stamina_points) * 5
 player_technique = 5 + len(player_technique_points) * 1
+
+enemy_actions = [Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut]
+enemy_turn = random.choice(enemy_actions)
 
 main_menu = input("Kai and Owen Productions Presents: Punch-A-Looza!  Choices: Play/Credits/Tutorial ")
 
@@ -337,39 +341,120 @@ while True:
     ready = input("Are you ready? Choices: Y/N ")
     if ready == "Y":
         print("Ready. Set. BOX! ")
-        while player_health and Tutorial_Boss != 0:
-            turn = input("What move do you want to do?  Choices: Attack/Defend/Rest ")
-            if turn == "Attack":
+
+        while player_health and Tutorial_Boss.health != 0:
+            player_turn = input("What do you want to do?  Choices: Attack/Defend/Rest ")
+            if player_turn == "Attack":
                 attack_move = input("What kind of attack do you want to use?  Choices: Jab/Straight/Left Hook/Right Hook/Right Uppercut ")
+
                 if attack_move == "Jab":
                     print(f"{player_story_name} goes for a beautiful jab! ")
+                    if enemy_turn != Block_Jab:
+                        Tutorial_Boss.health 
+
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if attack_move == "Straight":
                     print(f"{player_story_name} goes for a beautiful straight! ")
+
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if attack_move == "Left Hook":
                     print(f"{player_story_name} goes for a beautiful left hook! ")
+
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if attack_move == "Right Hook":
                     print(f"{player_story_name} goes for a beautiful right hook! ")
+
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if attack_move == "Right Uppercut":
                     print(f"{player_story_name} goes for a beautiful right uppercut! ")
-            if turn == "Defend":
-                defend_move = input("What kind of defend do you want to use?  Choices: Block Jab/Block Straight/Block Left Hook/Block Right Hook/Block Right Uppercut ")
+                    
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
+            else:
+                print("That's not a choice kid... ")
+                continue
+
+            if player_turn == "Defend":
+                defend_move = input("What kind of defense do you want to use?  Choices: Block Jab/Block Straight/Block Left Hook/Block Right Hook/Block Right Uppercut ")
                 if defend_move == "Block Jab":
                     print(f"{player_story_name} tries to block a jab! ")
+
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if defend_move == "Block Straight":
                     print(f"{player_story_name} tries to block a straight! ")
+
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if defend_move == "Block Left Hook":
                     print(f"{player_story_name} tries to block a left hook! ")
+
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if defend_move == "Block Right Hook":
                     print(f"{player_story_name} tries to block a right hook! ")
+
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if defend_move == "Block Right Uppercut":
                     print(f"{player_story_name} tries to block a right uppercut! ")
-            if turn == "Rest":
-                rest_move = input("What kind of rest do you want to use?  Choices: Relax Muscles/Put Guard Down/Full Body Relaxation ")
+                
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
+            else:
+                print("That's not a choice kid... ")
+                continue
+
+            if player_turn == "Rest":
+                rest_move = input("How do you want to rest?  Choices: Relax Muscles/Put Guard Down/Full Body Relaxation ")
                 if rest_move == "Relax Muscles":
                     print(f"{player_story_name} seems to be relaxing {player_pronoun3.lower} muscles! ")
+                
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if rest_move == "Put Guard Down":
                     print(f"{player_story_name} seems to be relaxing putting {player_pronoun3.lower} guard down! ")
+                
+                else:
+                    print("That's not a choice kid... ")
+                    continue
+
                 if rest_move == "Full Body Relaxation":
                     print(f"{player_story_name} seems to be relaxing fully relaxing {player_pronoun3.lower} body! ")
+                
+                else:
+                    print("That's not a choice kid... ")
+                    continue   
+
+            else:
+                print("That's not a choice kid... ")
+                continue
+
     if ready == "N":
         print("Thank you for playing our game! ")
