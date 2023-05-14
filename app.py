@@ -350,7 +350,7 @@ while True:
                 if attack_move == "Jab":
                     print(f"{player_story_name} goes for a beautiful jab! ")
                     if enemy_turn != Block_Jab:
-                        Tutorial_Boss.health 
+                        Tutorial_Boss.health - Jab.damage
 
                 else:
                     print("That's not a choice kid... ")
