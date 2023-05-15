@@ -12,12 +12,12 @@ class enemy(npc):
     def __str__(self):
         return f"{self.name},{self.health},{ self.attacks},{self.stamina},{self.technique}"
 
-Tutorial_Boss = enemy('John Parkinson','500','10','100','5') 
-Round_1_Boss = enemy('Alexander Angela Alexandrios II', '750', '25', '200', '7')
-Round_2_Boss = enemy('Bob Smith Jr.', '1500', '30', '250', '10')
-Round_3_Boss = enemy('Albert Hilton', '2000', '40','350', '13')
-Quarter_Finals_Boss = enemy('Scorpio Lancer','2500', '50', '500', '15')
-Semi_Finals_Boss = enemy('Phuk Sheet Jr.', '3500','75','750', '20')
+Tutorial_Boss = enemy('John Parkinson','250','10','100','5') 
+Round_1_Boss = enemy('Alexander Angela Alexandrios II', '300', '25', '200', '7')
+Round_2_Boss = enemy('Bob Smith Jr.', '350', '30', '250', '10')
+Round_3_Boss = enemy('Albert Hilton', '400', '40','350', '13')
+Quarter_Finals_Boss = enemy('Scorpio Lancer','450', '50', '500', '15')
+Semi_Finals_Boss = enemy('Phuk Sheet Jr.', '700','75','750', '20')
 class final_boss(enemy):
     def __init__(self, name, health, attacks, stamina, technique, special_move):
         super().__init__(name, health, attacks, stamina, technique)
