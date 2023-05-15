@@ -7,7 +7,7 @@ class enemy(npc):
         super().__init__(name)
         self.health = int(health)
         self.attacks = int(attacks) 
-        self.samina = int(stamina) 
+        self.stamina = int(stamina) 
         self.technique = int(technique)
     def __str__(self):
         return f"{self.name},{self.health},{ self.attacks},{self.stamina},{self.technique}"
