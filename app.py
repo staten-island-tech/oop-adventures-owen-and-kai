@@ -263,7 +263,7 @@ while True:
             break
 
     if scene1_dialogue_choice1 == "2":
-        scene1_dialogue1 = input(f"{player_story_name}: What am I looking at? Of course it's that blob of a brain that you have! All that muscle's not going to help you in a fight if it belongs to that retard of a brain you have.  Choices: Coninue ")
+        scene1_dialogue1 = input(f"{player_story_name}: What am I looking at? Of course it's that blob of a brain that you have! All that muscle's not going to help you in a fight if it belongs to that retard of a brain you have.  Choices: Continue ")
 
         if scene1_dialogue1 == "Continue":
             scene1_pt7 = input("You don't know why these words left your mouth, but it felt good. Everyone is looking at you in shock and you feel power rushing through your veins as adrenaline rushes through your entire body. However, John is visibly fuming as the vein in his head looked like it was about to burst.  Choices: Continue ")
@@ -330,6 +330,7 @@ while True:
 
         if scene1_pt10 == "Continue":
             print("You start to enter the ring... ")
+            time.sleep(1)
             break
 
         else:
@@ -357,18 +358,12 @@ while True:
                         time.sleep(1)
                         if tutorial_boss_turn != Defend:
                             print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")
-                            Tutorial_Boss.health -= Jab.damage                  
-
-                        else:
-                            print("That's not a choice kid... ")
-                            continue  
+                            Tutorial_Boss.health -= Jab.damage  
+                            continue               
 
                         if tutorial_boss_turn == Defend:
                             print(f"But {player_story_name}'s punch was skillfully evaded by an excellent block from {Tutorial_Boss.name}! ")
                             Tutorial_Boss.health = Tutorial_Boss.health
-
-                        else:
-                            print("That's not a choice kid... ")
                             continue
 
                     if player_stamina < 15:
@@ -386,18 +381,12 @@ while True:
                     if tutorial_boss_turn != Defend:
                         print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")
                         Tutorial_Boss.health -= Straight.damage
-
-                    else:
-                        print("That's not a choice kid... ")
-                        continue     
+                        continue
 
                     if tutorial_boss_turn == Defend:
                         print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
                         Tutorial_Boss.health -= Straight.damage / 2
-
-                    else:
-                        print("That's not a choice kid... ")
-                        continue  
+                        continue
                                                   
                 else:
                     print("That's not a choice kid... ")
