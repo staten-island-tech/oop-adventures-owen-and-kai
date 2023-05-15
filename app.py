@@ -1,4 +1,5 @@
 import random
+import time
 from attacks import Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut
 from defense import Block_Jab, Block_Straight, Block_Left_Hook, Block_Right_Hook, Block_Right_Uppercut
 from resting import Relax_Muscles, Put_Guard_Down, Full_Body_Relaxation
@@ -341,7 +342,6 @@ while True:
     ready = input("Are you ready? Choices: Y/N ")
     if ready == "Y":
         print("Ready. Set. BOX! ")
-
         while player_health and Tutorial_Boss.health != 0:
             player_turn = input("What do you want to do?  Choices: Attack/Defend/Rest ")
             if player_turn == "Attack":
@@ -349,8 +349,22 @@ while True:
 
                 if attack_move == "Jab":
                     print(f"{player_story_name} goes for a beautiful jab! ")
+                    time.sleep(1)
                     if enemy_turn != Block_Jab:
-                        Tutorial_Boss.health - Jab.damage
+                        print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")
+                        Tutorial_Boss.health -= Jab.damage
+
+                    else:
+                        print("That's not a choice kid... ")
+                        continue  
+
+                    if enemy_turn == Block_Jab:
+                        print(f"But {player_story_name}'s punch was skillfully evaded by an excellent block from {Tutorial_Boss.name}! ")
+                        Tutorial_Boss.health = Tutorial_Boss.health
+
+                    else:
+                        print("That's not a choice kid... ")
+                        continue  
 
                 else:
                     print("That's not a choice kid... ")
@@ -358,35 +372,95 @@ while True:
 
                 if attack_move == "Straight":
                     print(f"{player_story_name} goes for a beautiful straight! ")
+                    time.sleep(1)
+                    if enemy_turn != Block_Straight:
+                        print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")
+                        Tutorial_Boss.health -= Straight.damage
 
+                    else:
+                        print("That's not a choice kid... ")
+                        continue     
+
+                    if enemy_turn == Block_Straight:
+                        print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
+                        Tutorial_Boss.health -= Tutorial_Boss.health * Block_Straight.damage_reduced
+
+                    else:
+                        print("That's not a choice kid... ")
+                        continue  
+                                                  
                 else:
                     print("That's not a choice kid... ")
                     continue
 
                 if attack_move == "Left Hook":
                     print(f"{player_story_name} goes for a beautiful left hook! ")
+                    time.sleep(1)
+                    if enemy_turn != Block_Left_Hook:
+                        print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                       
+                        Tutorial_Boss.health -= Left_Hook.damage
 
+                    else:
+                        print("That's not a choice kid... ")
+                        continue     
+
+                    if enemy_turn == Block_Left_Hook:
+                        print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
+                        Tutorial_Boss.health = Tutorial_Boss.health
+
+                    else:
+                        print("That's not a choice kid... ")
+                        continue  
+                                                 
                 else:
                     print("That's not a choice kid... ")
                     continue
 
                 if attack_move == "Right Hook":
                     print(f"{player_story_name} goes for a beautiful right hook! ")
+                    time.sleep(1)
+                    if enemy_turn != Block_Right_Hook:
+                        print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                       
+                        Tutorial_Boss.health -= Right_Hook.damage
 
+                    else:
+                        print("That's not a choice kid... ")
+                        continue     
+
+                    if enemy_turn == Block_Right_Hook:
+                        print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
+                        Tutorial_Boss.health -= Tutorial_Boss.health * Block_Right_Hook.damage_reduced
+
+                    else:
+                        print("That's not a choice kid... ")
+                        continue  
+                                                 
                 else:
                     print("That's not a choice kid... ")
                     continue
 
                 if attack_move == "Right Uppercut":
                     print(f"{player_story_name} goes for a beautiful right uppercut! ")
-                    
+                    time.sleep(1)
+                    if enemy_turn != Block_Right_Uppercut:
+                        print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                        
+                        Tutorial_Boss.health -= Right_Uppercut.damage
+
+                    else:
+                        print("That's not a choice kid... ")
+                        continue     
+
+                    if enemy_turn == Block_Right_Uppercut:
+                        print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
+                        Tutorial_Boss.health -= Tutorial_Boss.health * Block_Right_Uppercut.damage_reduced
+
+                    else:
+                        print("That's not a choice kid... ")
+                        continue  
+                                                 
                 else:
                     print("That's not a choice kid... ")
                     continue
-
-            else:
-                print("That's not a choice kid... ")
-                continue
 
             if player_turn == "Defend":
                 defend_move = input("What kind of defense do you want to use?  Choices: Block Jab/Block Straight/Block Left Hook/Block Right Hook/Block Right Uppercut ")
@@ -424,10 +498,6 @@ while True:
                 else:
                     print("That's not a choice kid... ")
                     continue
-
-            else:
-                print("That's not a choice kid... ")
-                continue
 
             if player_turn == "Rest":
                 rest_move = input("How do you want to rest?  Choices: Relax Muscles/Put Guard Down/Full Body Relaxation ")

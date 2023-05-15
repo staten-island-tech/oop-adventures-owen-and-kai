@@ -5,8 +5,8 @@ class Move:
 class Attack(Move):
     def __init__(self, name, damage, stamina_drained):
         super().__init__(name)
-        self.damage = damage
-        self.stamina_drained = stamina_drained
+        self.damage = int(damage)
+        self.stamina_drained = int(stamina_drained)
     def __str__(self):
         return f"{self.name}, {self.damage}, {self.stamina_drained}"
 

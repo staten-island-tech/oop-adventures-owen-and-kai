@@ -5,10 +5,10 @@ class npc():
 class enemy(npc):
     def __init__(self, name, health, attacks, stamina, technique):
         super().__init__(name)
-        self.health = health
-        self.attacks = attacks 
-        self.samina = stamina 
-        self.technique = technique
+        self.health = int(health)
+        self.attacks = int(attacks) 
+        self.samina = int(stamina) 
+        self.technique = int(technique)
     def __str__(self):
         return f"{self.name},{self.health},{ self.attacks},{self.stamina},{self.technique}"
 
