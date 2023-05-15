@@ -1,7 +1,7 @@
 import random
 import time
 from attacks import Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut
-from defense import Block_Jab, Block_Straight, Block_Left_Hook, Block_Right_Hook, Block_Right_Uppercut
+from defense import Block_Forward, Block_Side, Block_Down
 from resting import Relax_Muscles, Put_Guard_Down, Full_Body_Relaxation
 from NPC import Tutorial_Boss, Round_1_Boss, Round_2_Boss, Round_3_Boss, Quarter_Finals_Boss, Semi_Finals_Boss, Final_Round_Boss, Glove_seller, Black_Market_Dealer, Coach, The_Miracle_Builder
 
@@ -22,6 +22,9 @@ player_technique = 5 + len(player_technique_points) * 1
 
 tutorial_boss_enemy_actions = [Attack, Attack, Attack, Defend, Defend, Rest]
 tutorial_boss_turn = random.choice(tutorial_boss_enemy_actions)
+
+tutorial_boss_enemy_attack = [Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut]
+tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
 
 main_menu = input("Kai and Owen Productions Presents: Punch-A-Looza!  Choices: Play/Credits/Tutorial ")
 
@@ -352,7 +355,7 @@ while True:
                 attack_move = input("What kind of attack do you want to use?  Choices: Jab/Straight/Left Hook/Right Hook/Right Uppercut ")
 
                 if attack_move == "Jab":
-                    if player_stamina >= 15:
+                    if player_stamina >= 10:
                         player_stamina -= 10
                         print(f"{player_story_name} goes for a beautiful jab! ")
                         time.sleep(1)
@@ -366,7 +369,10 @@ while True:
                             Tutorial_Boss.health = Tutorial_Boss.health
                             continue
 
-                    if player_stamina < 15:
+                        if tutorial_boss_turn == Attack:
+                            if tutorial_boss_turn_attack == Jab:
+
+                    if player_stamina < 10:
                         print("Sorry, you do not have enough stamina to perform this attack. ")
                         continue
 
@@ -375,91 +381,87 @@ while True:
                     continue
 
                 if attack_move == "Straight":
-                    player_stamina -= 30
-                    print(f"{player_story_name} goes for a beautiful straight! ")
-                    time.sleep(1)
-                    if tutorial_boss_turn != Defend:
-                        print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")
-                        Tutorial_Boss.health -= Straight.damage
-                        continue
+                    if player_stamina >= 30:
+                        player_stamina -= 30
+                        print(f"{player_story_name} goes for a beautiful straight! ")
+                        time.sleep(1)
+                        if tutorial_boss_turn != Defend:
+                            print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")
+                            Tutorial_Boss.health -= Straight.damage
+                            continue
 
-                    if tutorial_boss_turn == Defend:
-                        print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
-                        Tutorial_Boss.health -= Straight.damage / 2
-                        continue
+                        if tutorial_boss_turn == Defend:
+                            print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
+                            Tutorial_Boss.health -= Straight.damage / 2
+                            continue
+                
+                    if player_stamina < 30:
+                        print("Sorry, you do not have enough stamina to perform this attack. ")
+                        continue               
                                                   
                 else:
                     print("That's not a choice kid... ")
                     continue
 
                 if attack_move == "Left Hook":
-                    player_stamina -= 15
-                    print(f"{player_story_name} goes for a beautiful left hook! ")
-                    time.sleep(1)
-                    if tutorial_boss_turn != Defend:
-                        print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                       
-                        Tutorial_Boss.health -= Left_Hook.damage
+                    if player_stamina >= 15:
+                        player_stamina -= 15
+                        print(f"{player_story_name} goes for a beautiful left hook! ")
+                        time.sleep(1)
+                        if tutorial_boss_turn != Defend:
+                            print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                       
+                            Tutorial_Boss.health -= Left_Hook.damage
 
-                    else:
-                        print("That's not a choice kid... ")
-                        continue   
+                        if tutorial_boss_turn == Defend:
+                            print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
+                            Tutorial_Boss.health = Tutorial_Boss.health
 
-                    if tutorial_boss_turn == Defend:
-                        print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
-                        Tutorial_Boss.health = Tutorial_Boss.health
-
-                    else:
-                        print("That's not a choice kid... ")
-                        continue  
+                    if player_stamina < 15:
+                        print("Sorry, you do not have enough stamina to perform this attack. ")
+                        continue      
                                                  
                 else:
                     print("That's not a choice kid... ")
                     continue
 
                 if attack_move == "Right Hook":
-                    player_stamina -= 45
-                    print(f"{player_story_name} goes for a beautiful right hook! ")
-                    time.sleep(1)
-                    if tutorial_boss_turn != Defend:
-                        print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                       
-                        Tutorial_Boss.health -= Right_Hook.damage
+                    if player_stamina >= 45:
+                        player_stamina -= 45
+                        print(f"{player_story_name} goes for a beautiful right hook! ")
+                        time.sleep(1)
+                        if tutorial_boss_turn != Defend:
+                            print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                       
+                            Tutorial_Boss.health -= Right_Hook.damage
 
-                    else:
-                        print("That's not a choice kid... ")
+                        if tutorial_boss_turn == Defend:
+                            print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
+                            Tutorial_Boss.health -= Right_Hook.damage / 2
+
+                    if player_stamina < 45:
+                        print("Sorry, you do not have enough stamina to perform this attack. ")
                         continue     
-
-                    if tutorial_boss_turn == Defend:
-                        print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
-                        Tutorial_Boss.health -= Right_Hook.damage / 2
-
-                    else:
-                        print("That's not a choice kid... ")
-                        continue  
-                                                 
+ 
                 else:
                     print("That's not a choice kid... ")
                     continue
 
                 if attack_move == "Right Uppercut":
-                    player_stamina -= 60
-                    print(f"{player_story_name} goes for a beautiful right uppercut! ")
-                    time.sleep(1)
-                    if tutorial_boss_turn != Defend:
-                        print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                        
-                        Tutorial_Boss.health -= Right_Uppercut.damage
+                    if player_stamina >= 60:
+                        player_stamina -= 60
+                        print(f"{player_story_name} goes for a beautiful right uppercut! ")
+                        time.sleep(1)
+                        if tutorial_boss_turn != Defend:
+                            print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                        
+                            Tutorial_Boss.health -= Right_Uppercut.damage
 
-                    else:
-                        print("That's not a choice kid... ")
-                        continue     
+                        if tutorial_boss_turn == Defend:
+                            print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
+                            Tutorial_Boss.health -= Right_Uppercut.damage / 2
 
-                    if tutorial_boss_turn == Defend:
-                        print(f"But {player_story_name}'s punch was evaded by an excellent block from {Tutorial_Boss.name}! ")
-                        Tutorial_Boss.health -= Right_Uppercut.damage / 2
+                    if player_stamina < 60:
+                        print("Sorry, you do not have enough stamina to perform this attack. ")
+                        continue                
 
-                    else:
-                        print("That's not a choice kid... ")
-                        continue  
-                                                 
                 else:
                     print("That's not a choice kid... ")
                     continue

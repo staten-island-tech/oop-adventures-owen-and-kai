@@ -3,18 +3,13 @@ class Move:
         self.name = name
 
 class Defend(Move):
-    def __init__(self, name, damage_reduced):
+    def __init__(self, name):
         super().__init__(name)
-        self.damage_reduced = int(damage_reduced)
     def __str__(self):
-        return f"{self.name, self.damage_reduced}" 
+        return f"{self.name}" 
 
-Block_Jab = Defend('Block Jab', '5')
+Block_Forward = Defend('Block Forward')
 
-Block_Straight = Defend('Block Straight', '20')
+Block_Side = Defend('Block Side')
 
-Block_Left_Hook = Defend('Block Left Hook', '25')
-
-Block_Right_Hook = Defend('Block Right Hook', '65')
-
-Block_Right_Uppercut = Defend('Block Right Uppercut', '80')
+Block_Down = Defend('Block Down')
