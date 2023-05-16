@@ -22,7 +22,6 @@ player_stamina = 100 + len(player_stamina_points) * 5
 player_technique = 5 + len(player_technique_points) * 1
 
 tutorial_boss_enemy_actions = [Attack, Attack, Attack, Defend, Defend]
-tutorial_boss_turn = random.choice(tutorial_boss_enemy_actions)
 
 tutorial_boss_enemy_attack = [Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut]
 tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
@@ -360,11 +359,11 @@ while True:
             player_turn = input("What do you want to do?  Choices: Attack/Defend/Rest ")
             if player_turn == "Attack":
                 attack_move = input("What kind of attack do you want to use?  Choices: Jab/Straight/Left Hook/Right Hook/Right Uppercut ")
-
                 if attack_move == "Jab":
                     if player_stamina >= 10:
                         player_stamina -= 10
                         print(f"{player_story_name} goes for a beautiful jab! ")
+                        tutorial_boss_turn = random.choice(tutorial_boss_enemy_actions)
                         time.sleep(1)
                         if tutorial_boss_turn != Defend:
                             print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")
@@ -514,6 +513,7 @@ while True:
                     if player_stamina >= 30:
                         player_stamina -= 30
                         print(f"{player_story_name} goes for a beautiful straight! ")
+                        tutorial_boss_turn = random.choice(tutorial_boss_enemy_actions)                       
                         time.sleep(1)
                         if tutorial_boss_turn != Defend:
                             print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")
@@ -663,6 +663,7 @@ while True:
                     if player_stamina >= 15:
                         player_stamina -= 15
                         print(f"{player_story_name} goes for a beautiful left hook! ")
+                        tutorial_boss_turn = random.choice(tutorial_boss_enemy_actions)
                         time.sleep(1)
                         if tutorial_boss_turn != Defend:
                             print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                       
@@ -811,6 +812,7 @@ while True:
                     if player_stamina >= 45:
                         player_stamina -= 45
                         print(f"{player_story_name} goes for a beautiful right hook! ")
+                        tutorial_boss_turn = random.choice(tutorial_boss_enemy_actions)
                         time.sleep(1)
                         if tutorial_boss_turn != Defend:
                             print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                       
@@ -959,6 +961,7 @@ while True:
                     if player_stamina >= 60:
                         player_stamina -= 60
                         print(f"{player_story_name} goes for a beautiful right uppercut! ")
+                        tutorial_boss_turn = random.choice(tutorial_boss_enemy_actions)
                         time.sleep(1)
                         if tutorial_boss_turn != Defend:
                             print(f"And it penetrates straight through {Tutorial_Boss.name}'s defense! ")                        
