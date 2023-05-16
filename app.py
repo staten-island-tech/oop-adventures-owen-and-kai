@@ -6,10 +6,11 @@ from resting import Relax_Muscles, Put_Guard_Down, Full_Body_Relaxation
 from NPC import Tutorial_Boss, Round_1_Boss, Round_2_Boss, Round_3_Boss, Quarter_Finals_Boss, Semi_Finals_Boss, Final_Round_Boss, Glove_seller, Black_Market_Dealer, Coach, The_Miracle_Builder
 
 stat_point = None
-Attack = None
-Defend = None
-Hit = None
-Miss = None
+Attack = 1
+Defend = 2
+Rest = 3
+Hit = 4
+Miss = 5
 
 player_dexterity_points = []
 player_strength_points = []
@@ -21,10 +22,12 @@ player_strength = 10 + len(player_strength_points) * 1
 player_stamina = 100 + len(player_stamina_points) * 5
 player_technique = 5 + len(player_technique_points) * 1
 
-tutorial_boss_enemy_actions = [Attack, Attack, Attack, Defend, Defend]
+tutorial_boss_enemy_actions = [Attack, Attack, Attack, Defend, Defend, Rest]
+tutorial_boss_enemy_turn = random.choice(tutorial_boss_enemy_actions)
 
 tutorial_boss_enemy_attack = [Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut]
 tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
+print(tutorial_boss_enemy_turn)
 
 tutorial_boss_enemy_spontaneous_strike = [Hit, Miss, Miss, Miss]
 tutorial_boss_enemy_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
@@ -505,10 +508,6 @@ while True:
                         print("Sorry, you do not have enough stamina to perform this attack. ")
                         continue
 
-                else:
-                    print("That's not a choice kid... ")
-                    continue
-
                 if attack_move == "Straight":
                     if player_stamina >= 30:
                         player_stamina -= 30
@@ -655,10 +654,6 @@ while True:
                         print("Sorry, you do not have enough stamina to perform this attack. ")
                         continue               
                                                   
-                else:
-                    print("That's not a choice kid... ")
-                    continue
-
                 if attack_move == "Left Hook":
                     if player_stamina >= 15:
                         player_stamina -= 15
@@ -803,10 +798,6 @@ while True:
                     if player_stamina < 15:
                         print("Sorry, you do not have enough stamina to perform this attack. ")
                         continue      
-                                                 
-                else:
-                    print("That's not a choice kid... ")
-                    continue
 
                 if attack_move == "Right Hook":
                     if player_stamina >= 45:
@@ -952,10 +943,6 @@ while True:
                     if player_stamina < 45:
                         print("Sorry, you do not have enough stamina to perform this attack. ")
                         continue     
- 
-                else:
-                    print("That's not a choice kid... ")
-                    continue
 
                 if attack_move == "Right Uppercut":
                     if player_stamina >= 60:
