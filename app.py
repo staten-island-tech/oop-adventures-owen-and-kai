@@ -620,9 +620,14 @@ while True:
                         print(f"{player_story_name} goes for a beautiful straight! ")
                         tutorial_boss_turn = random.choice(tutorial_boss_enemy_actions)                       
                         time.sleep(1)
+                        
                     
                     if player_stamina < 30:
                         print("Sorry, you do not have enough stamina to perform this attack. ")
+                        time.sleep(1)
+                        print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
+                        player_health -= 30
+                        print(f"Health: {player_health} Stamina: {player_stamina} ")
                         continue
                                         
                 if attack_move == "Left Hook":
@@ -634,6 +639,10 @@ while True:
                     
                     if player_stamina < 15:
                         print("Sorry, you do not have enough stamina to perform this attack. ")
+                        time.sleep(1)
+                        print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
+                        player_health -= 30
+                        print(f"Health: {player_health} Stamina: {player_stamina} ")
                         continue
 
                 if attack_move == "Right Hook":
@@ -645,6 +654,10 @@ while True:
                     
                     if player_stamina < 45:
                         print("Sorry, you do not have enough stamina to perform this attack. ")
+                        time.sleep(1)
+                        print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
+                        player_health -= 30
+                        print(f"Health: {player_health} Stamina: {player_stamina} ")
                         continue
 
                 if attack_move == "Right Uppercut":
@@ -656,6 +669,10 @@ while True:
                     
                     if player_stamina < 60:
                         print("Sorry, you do not have enough stamina to perform this attack. ")
+                        time.sleep(1)
+                        print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
+                        player_health -= 30
+                        print(f"Health: {player_health} Stamina: {player_stamina} ")
                         continue
 
                 else:
