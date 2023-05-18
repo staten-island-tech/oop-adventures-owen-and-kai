@@ -623,7 +623,7 @@ while True:
                         
                     
                     if player_stamina < 30:
-                        print("Sorry, you do not have enough stamina to perform this attack. ")
+                        print(f"{player_story_name} seems fatigued and doesn't have enough energy to perform his attack! ")
                         time.sleep(1)
                         print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
                         player_health -= 30
@@ -638,7 +638,7 @@ while True:
                         time.sleep(1)   
                     
                     if player_stamina < 15:
-                        print("Sorry, you do not have enough stamina to perform this attack. ")
+                        print(f"{player_story_name} seems fatigued and doesn't have enough energy to perform his attack! ")
                         time.sleep(1)
                         print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
                         player_health -= 30
@@ -653,7 +653,7 @@ while True:
                         time.sleep(1)
                     
                     if player_stamina < 45:
-                        print("Sorry, you do not have enough stamina to perform this attack. ")
+                        print(f"{player_story_name} seems fatigued and doesn't have enough energy to perform his attack! ")
                         time.sleep(1)
                         print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
                         player_health -= 30
@@ -668,7 +668,7 @@ while True:
                         time.sleep(1)              
                     
                     if player_stamina < 60:
-                        print("Sorry, you do not have enough stamina to perform this attack. ")
+                        print(f"{player_story_name} seems fatigued and doesn't have enough energy to perform his attack! ")
                         time.sleep(1)
                         print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
                         player_health -= 30
@@ -685,11 +685,13 @@ while True:
                     print(f"{player_story_name} tries to block a forward punch ")
                     time.sleep(1)
                     if tutorial_boss_enemy_turn == Attack:
+                        tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
                         if tutorial_boss_turn_attack == Jab:
                             if Tutorial_Boss.stamina >= 10:
                                 Tutorial_Boss.stamina -= 10
                                 print(f"And {player_story_name} blocks a spectacular jab from {Tutorial_Boss.name}! ")
                                 player_health = player_health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
                                 continue
 
@@ -698,6 +700,7 @@ while True:
                                 time.sleep(1)
                                 Tutorial_Boss.stamina + 20                                
                                 Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
                                 continue
 
@@ -706,6 +709,7 @@ while True:
                                 Tutorial_Boss.stamina -= 30
                                 print(f"And {player_story_name} skillfully evades a spectacular straight from {Tutorial_Boss.name}! ")
                                 player_health = player_health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
                                 continue
 
@@ -714,6 +718,7 @@ while True:
                                 time.sleep(1)
                                 Tutorial_Boss.stamina + 20                                
                                 Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
                                 continue
 
@@ -722,6 +727,7 @@ while True:
                                 Tutorial_Boss.stamina -= 15
                                 print(f"Oh! What do we have here! {player_story_name} tries to block a forward punch but {Tutorial_Boss.name} goes for a tremendous left hook to the face! ")
                                 player_health -= Left_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
                                 continue
 
@@ -730,6 +736,7 @@ while True:
                                 time.sleep(1)
                                 Tutorial_Boss.stamina + 20                                
                                 Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
                                 continue
 
@@ -738,6 +745,7 @@ while True:
                                 Tutorial_Boss.stamina -= 45
                                 print(f"Oh! What a spectacle! {player_story_name} tries to block a forward punch but {Tutorial_Boss.name} goes for a bone_breaking right hook to the body! ")
                                 player_health -= Right_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
                                 continue
 
@@ -746,14 +754,16 @@ while True:
                                 time.sleep(1)
                                 Tutorial_Boss.stamina + 20                                
                                 Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
                                 continue
 
                         if tutorial_boss_turn_attack == Right_Uppercut:
                             if Tutorial_Boss.stamina >= 60:
                                 Tutorial_Boss.stamina -= 60
-                                print(f"Oh! What a surprise! {player_story_name} tries to block a forward punch but {Tutorial_Boss.name} goes for a jaw_breaking right uppercut to the chin! ")
+                                print(f"Oh! What a surprise! {player_story_name} tries to block a forward punch but {Tutorial_Boss.name} goes for a jaw breaking right uppercut to the chin! ")
                                 player_health -= Right_Uppercut.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
                                 continue   
 
@@ -762,8 +772,14 @@ while True:
                                 time.sleep(1)
                                 Tutorial_Boss.stamina + 20                                
                                 Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)
-                                continue                     
+                                continue   
+
+                    if tutorial_boss_enemy_turn == Defend:
+                        print(f"Both fighters are wary of each other and both of them end up blocking absolutely nothing! I can almost feel the tension radiating from this fight! ")
+                        time.sleep(1)
+                        continue
 
                 if defend_move == "Block Side":
                     print(f"{player_story_name} tries to block a punch to the side! ")
@@ -779,6 +795,98 @@ while True:
                 rest_move = input("How do you want to rest?  Choices: Relax Muscles/Put Guard Down/Full Body Relaxation ")
                 if rest_move == "Relax Muscles":
                     print(f"{player_story_name} seems to be relaxing {player_pronoun3.lower} muscles! ")
+                    player_stamina += 20
+                    time.sleep(1)
+                    if tutorial_boss_enemy_turn == Attack:
+                        if tutorial_boss_turn_attack == Jab:
+                            if Tutorial_Boss.stamina >= 10:
+                                Tutorial_Boss.stamina -= 10
+                                print(f"Christ! {Tutorial_Boss.name} catches on to this and hits {player_story_name} with a nose-breaking jab to the face! ")
+                                player_health -= Jab.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                            if Tutorial_Boss.stamina < 10:
+                                print(f"But {Tutorial_Boss.name} has started to take a short break and doesn't attack at all! ")
+                                time.sleep(1)
+                                Tutorial_Boss.stamina + 20                                
+                                Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Straight:
+                            if Tutorial_Boss.stamina >= 30:
+                                Tutorial_Boss.stamina -= 30
+                                print(f"Christ! {Tutorial_Boss.name} catches on to this and hits {player_story_name} with a jaw-breaking straight to the face! ")
+                                player_health -= Straight.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                            if Tutorial_Boss.stamina < 30:
+                                print(f"But {Tutorial_Boss.name} has started to take a short break and doesn't attack at all! ")
+                                time.sleep(1)
+                                Tutorial_Boss.stamina + 20                                
+                                Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Left_Hook:
+                            if Tutorial_Boss.stamina >= 15:
+                                Tutorial_Boss.stamina -= 15
+                                print(f"Christ! {Tutorial_Boss.name} catches on to this and hits {player_story_name} with a mind-blowing left hook to the face! ")
+                                player_health -= Left_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                            if Tutorial_Boss.stamina < 30:
+                                print(f"But {Tutorial_Boss.name} has started to take a short break and doesn't attack at all! ")
+                                time.sleep(1)
+                                Tutorial_Boss.stamina + 20                                
+                                Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Right_Hook:
+                            if Tutorial_Boss.stamina >= 45:
+                                Tutorial_Boss.stamina -= 45
+                                print(f"Christ! {Tutorial_Boss.name} catches on to this and hits {player_story_name} with a skull-crushing right hook to the head! ")
+                                player_health -= Left_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                            if Tutorial_Boss.stamina < 45:
+                                print(f"But {Tutorial_Boss.name} has started to take a short break and doesn't attack at all! ")
+                                time.sleep(1)
+                                Tutorial_Boss.stamina + 20                                
+                                Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Right_Uppercut:
+                            if Tutorial_Boss.stamina >= 60:
+                                Tutorial_Boss.stamina -= 60
+                                print(f"Christ! {Tutorial_Boss.name} catches on to this and hits {player_story_name} with a neck-snapping right uppercut to the head! ")
+                                player_health -= Left_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                            if Tutorial_Boss.stamina < 60:
+                                print(f"But {Tutorial_Boss.name} has started to take a short break and doesn't attack at all! ")
+                                time.sleep(1)
+                                Tutorial_Boss.stamina + 20                                
+                                Tutorial_Boss.health = Tutorial_Boss.health
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
 
                 if rest_move == "Put Guard Down":
                     print(f"{player_story_name} seems to be relaxing putting {player_pronoun3.lower} guard down! ")
