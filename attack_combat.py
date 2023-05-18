@@ -25,6 +25,8 @@ player_technique = 5 + len(player_technique_points) * 1
 tutorial_boss_enemy_actions = [Attack, Attack, Attack, Defend]
 tutorial_boss_enemy_turn = random.choice(tutorial_boss_enemy_actions)
 
+player_customization_screen = input("Welcome to the player customization screen, here you will make your own custom player that will progress through the story. Please refrain from using any personal information as we will not take any responsibility if your information gets leaked, thank you.  Choices: Continue ")
+
 if tutorial_boss_enemy_turn == Attack:
     tutorial_boss_enemy_spontaneous_strike = [Hit, Miss, Miss, Miss]
     tutorial_boss_enemy_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
@@ -33,9 +35,7 @@ tutorial_boss_enemy_attack = [Jab, Straight, Left_Hook, Right_Hook, Right_Upperc
 tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
 
 player_spontaneous_strike = [Hit, Miss, Miss, Miss]
-player_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
-
-player_customization_screen = input("Welcome to the player customization screen, here you will make your own custom player that will progress through the story. Please refrain from using any personal information as we will not take any responsibility if your information gets leaked, thank you.  Choices: Continue ")
+player_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike) 
 
 while True:
     if player_customization_screen == "Continue":
