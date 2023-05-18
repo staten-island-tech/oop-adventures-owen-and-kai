@@ -361,9 +361,6 @@ while True:
             player_turn = input("What do you want to do?  Choices: Attack/Defend/Rest ")
             if player_turn == "Attack":
                 attack_move = input("What kind of attack do you want to use?  Choices: Jab/Straight/Left Hook/Right Hook/Right Uppercut ")
-<<<<<<< HEAD
-                attack_system()
-=======
                 if attack_move == "Jab":
                     if player_stamina >= 10:
                         player_stamina -= 10
@@ -680,7 +677,6 @@ while True:
                 else:
                     print("That's not a choice kid... ")
                     continue
->>>>>>> parent of b43ab8c (5/17/23 Resting Working?)
 
             if player_turn == "Defend":
                 defend_move = input("What kind of defense do you want to use?  Choices: Block Forward/Block Side/Block Down ")
