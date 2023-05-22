@@ -33,7 +33,7 @@ tutorial_boss_enemy_attack = [Jab, Straight, Left_Hook, Right_Hook, Right_Upperc
 tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
 
 player_spontaneous_strike = [Hit, Miss, Miss, Miss]
-player_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
+player_spontaneous_strike_chance = random.choice(player_spontaneous_strike)
 
 def attack_system(player_health, player_stamina, player_story_name):
     while True:
