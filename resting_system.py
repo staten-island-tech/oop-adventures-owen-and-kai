@@ -35,7 +35,7 @@ tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
 player_spontaneous_strike = [Hit, Miss, Miss, Miss]
 player_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
 
-def resting_system():
+def resting_system(player_story_name, player_pronoun3, player_stamina, player_health):
     while True:
         rest_move = input("How do you want to rest?  Choices: Relax Muscles/Put Guard Down/Full Body Relaxation ")
         if rest_move == "Relax Muscles":

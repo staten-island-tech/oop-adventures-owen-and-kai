@@ -35,7 +35,7 @@ tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
 player_spontaneous_strike = [Hit, Miss, Miss, Miss]
 player_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
 
-def attack_system():
+def attack_system(player_health, player_stamina, player_story_name):
     while True:
         attack_move = input("What kind of attack do you want to use?  Choices: Jab/Straight/Left Hook/Right Hook/Right Uppercut ")
         if attack_move == "Jab":
@@ -78,7 +78,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
                                 print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
-                                player_health = player_health 
                                 Tutorial_Boss.health -= Jab.damage
                                 print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)  
@@ -86,7 +85,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
                                 print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
-                                player_health = player_health
                                 Tutorial_Boss.health = Tutorial_Boss.health
                                 print(f"Health: {player_health} Stamina: {player_stamina} ")
                                 time.sleep(1)  
@@ -124,7 +122,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
                                 print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
-                                player_health = player_health
                                 Tutorial_Boss.health -= Jab.damage
                                 print(f"Health: {player_health} Stamina: {player_stamina} ")  
                                 time.sleep(1)
@@ -132,7 +129,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
                                 print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
-                                player_health = player_health
                                 Tutorial_Boss.health = Tutorial_Boss.health
                                 print(f"Health: {player_health} Stamina: {player_stamina} ") 
                                 time.sleep(1) 
@@ -170,7 +166,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
                                 print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")   
-                                player_health = player_health
                                 Tutorial_Boss.health -= Jab.damage
                                 print(f"Health: {player_health} Stamina: {player_stamina} ")  
                                 time.sleep(1)
@@ -178,7 +173,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
                                 print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
-                                player_health = player_health
                                 Tutorial_Boss.health = Tutorial_Boss.health
                                 print(f"Health: {player_health} Stamina: {player_stamina} ")  
                                 time.sleep(1)
@@ -216,7 +210,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
                                 print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ") 
-                                player_health = player_health
                                 Tutorial_Boss.health -= Jab.damage
                                 print(f"Health: {player_health} Stamina: {player_stamina} ") 
                                 time.sleep(1) 
@@ -224,7 +217,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
                                 print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
-                                player_health = player_health
                                 Tutorial_Boss.health = Tutorial_Boss.health
                                 print(f"Health: {player_health} Stamina: {player_stamina} ") 
                                 time.sleep(1) 
@@ -262,7 +254,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
                                 print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")
-                                player_health = player_health
                                 Tutorial_Boss.health -= Jab.damage
                                 print(f"Health: {player_health} Stamina: {player_stamina} ") 
                                 time.sleep(1) 
@@ -270,7 +261,6 @@ def attack_system():
 
                             if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
                                 print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
-                                player_health = player_health
                                 Tutorial_Boss.health = Tutorial_Boss.health
                                 print(f"Health: {player_health} Stamina: {player_stamina} ") 
                                 time.sleep(1) 

@@ -35,7 +35,7 @@ tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
 player_spontaneous_strike = [Hit, Miss, Miss, Miss]
 player_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
 
-def defend_system():
+def defend_system(player_story_name):
     while True:
         defend_move = input("What kind of defense do you want to use?  Choices: Block Forward/Block Side/Block Down ")
         if defend_move == "Block Forward":

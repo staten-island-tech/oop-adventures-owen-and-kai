@@ -15,6 +15,3 @@ currency = float(currency) + 100
 currency = float(currency) + 200
 currency = float(currency) - 50
 print (currency)
-
-
-
