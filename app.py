@@ -365,13 +365,13 @@ while True:
         while player_health and Tutorial_Boss.health != 0:
             player_turn = input("What do you want to do?  Choices: Attack/Defend/Rest ")
             if player_turn == "Attack":
-                attack_system(player_stamina, player_story_name)
-
-            if player_turn == "Defend":
+                attack_system(player_health, player_stamina, player_story_name)
+                
+            elif player_turn == "Defend":
                 defend_system(player_story_name)
-
-            if player_turn == "Rest":
+            elif player_turn == "Rest":
                 resting_system(player_story_name, player_pronoun3, player_stamina, player_health)
+                
 
     if ready == "N":
         print("Thank you for playing our game! ")
