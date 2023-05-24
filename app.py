@@ -4,9 +4,7 @@ from attacks import Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut
 from defense import Block_Forward, Block_Side, Block_Down
 from resting import Relax_Muscles, Put_Guard_Down, Full_Body_Relaxation
 from NPC import Tutorial_Boss, Round_1_Boss, Round_2_Boss, Round_3_Boss, Quarter_Finals_Boss, Semi_Finals_Boss, Final_Round_Boss, Glove_seller, Black_Market_Dealer, Coach, The_Miracle_Builder
-from attack_system import attack_system
-from defend_system import defend_system
-from resting_system import resting_system
+from combat import combat_system
 
 stat_point = None
 Attack = 1
@@ -365,13 +363,7 @@ while True:
         while player_health and Tutorial_Boss.health != 0:
             player_turn = input("What do you want to do?  Choices: Attack/Defend/Rest ")
             if player_turn == "Attack":
-                attack_system(player_health, player_stamina, player_story_name)
-                
-            elif player_turn == "Defend":
-                defend_system(player_story_name)
-            elif player_turn == "Rest":
-                resting_system(player_story_name, player_pronoun3, player_stamina, player_health)
-                
+                combat_system(player_health, player_stamina, player_story_name)
 
     if ready == "N":
         print("Thank you for playing our game! ")
