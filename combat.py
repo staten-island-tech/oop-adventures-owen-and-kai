@@ -37,10 +37,10 @@ player_spontaneous_strike_chance = random.choice(player_spontaneous_strike)
 
 def combat_system(player_health, player_stamina, player_story_name):
     while player_health and Tutorial_Boss.health != 0:
-        player_turn = input("What do you want to do?  Choices: Attack/Defend/Rest ")
-        if player_turn == "Attack":
-            attack_move = input("What kind of attack do you want to use?  Choices: Jab/Straight/Left Hook/Right Hook/Right Uppercut ")
-            if attack_move == "Jab":
+        player_turn = input("What do you want to do?  Choices: 1. Attack/2. Defend/3. Rest ")
+        if player_turn == "1":
+            attack_move = input("What kind of attack do you want to use?  Choices: 1. Jab/2. Straight/3. Left Hook/4. Right Hook/5. Right Uppercut ")
+            if attack_move == "1":
                 if player_stamina >= 10:
                     player_stamina -= 10
                     print(f"{player_story_name} goes for a beautiful jab! ")
@@ -290,14 +290,248 @@ def combat_system(player_health, player_stamina, player_story_name):
                     print(f"Health: {player_health} Stamina: {player_stamina} ")
                     continue
 
-            if attack_move == "Straight":
+            if attack_move == "2":
                 if player_stamina >= 30:
                     player_stamina -= 30
                     print(f"{player_story_name} goes for a beautiful straight! ")
                     tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_actions)                       
                     time.sleep(1)
                     
-                
+                    if tutorial_boss_enemy_turn == Defend:
+                        print(f"But {player_story_name}'s punch was skillfully evaded by an excellent block from {Tutorial_Boss.name}! ")
+                        Tutorial_Boss.health = Tutorial_Boss.health
+                        print(f"Health: {player_health} Stamina: {player_stamina} ")
+                        time.sleep(1)  
+                        continue
+
+                    if tutorial_boss_enemy_turn == Attack:
+                        tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
+                        tutorial_boss_enemy_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
+                        if tutorial_boss_turn_attack == Jab:
+                            if Tutorial_Boss.stamina >= 10:
+                                Tutorial_Boss.stamina -= 10
+                                print(f"And {Tutorial_Boss.name} tries for a jab! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Jab.damage
+                                    Tutorial_Boss.health -= Straight.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Jab.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
+                                    Tutorial_Boss.health -= Straight.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                            if Tutorial_Boss.stamina < 10:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                time.sleep(1)
+                                Tutorial_Boss.stamina + 20
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Straight.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Straight:
+                            if Tutorial_Boss.stamina >= 30:
+                                Tutorial_Boss.stamina -= 30
+                                print(f"And {Tutorial_Boss.name} tries for a straight! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Straight.damage 
+                                    Tutorial_Boss.health -= Straight.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Straight.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
+                                    Tutorial_Boss.health -= Jab.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 30:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Straight.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Left_Hook:
+                            if Tutorial_Boss.stamina >= 15:
+                                Tutorial_Boss.stamina -= 15
+                                print(f"And {Tutorial_Boss.name} tries for a left hook! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Left_Hook.damage 
+                                    Tutorial_Boss.health -= Straight.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Left_Hook.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")   
+                                    Tutorial_Boss.health -= Straight.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                            if Tutorial_Boss.stamina < 45:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Straight.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue     
+
+                        if tutorial_boss_turn_attack == Right_Hook:
+                            if Tutorial_Boss.stamina >= 45:
+                                Tutorial_Boss.stamina -= 45
+                                print(f"And {Tutorial_Boss.name} tries for a right hook! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Right_Hook.damage
+                                    Tutorial_Boss.health -= Straight.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Right_Hook.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ") 
+                                    Tutorial_Boss.health -= Straight.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 45:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Straight.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue                                    
+
+                        if tutorial_boss_turn_attack == Right_Uppercut:
+                            if Tutorial_Boss.stamina >= 60:
+                                Tutorial_Boss.stamina -= 60
+                                print(f"And {Tutorial_Boss.name} tries for a right uppercut! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Right_Uppercut.damage
+                                    Tutorial_Boss.health -= Straight.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Right_Uppercut.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")
+                                    Tutorial_Boss.health -= Straight.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 60:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Straight.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
                 if player_stamina < 30:
                     print("Sorry, you do not have enough stamina to perform this attack. ")
                     time.sleep(1)
@@ -306,13 +540,248 @@ def combat_system(player_health, player_stamina, player_story_name):
                     print(f"Health: {player_health} Stamina: {player_stamina} ")
                     continue
                                     
-            if attack_move == "Left Hook":
+            if attack_move == "3":
                 if player_stamina >= 15:
                     player_stamina -= 15
                     print(f"{player_story_name} goes for a beautiful left hook! ")
                     tutorial_boss_enemy_turn = random.choice(tutorial_boss_enemy_actions)
                     time.sleep(1)   
-                
+
+                    if tutorial_boss_enemy_turn == Defend:
+                        print(f"But {player_story_name}'s punch was skillfully evaded by an excellent block from {Tutorial_Boss.name}! ")
+                        Tutorial_Boss.health = Tutorial_Boss.health
+                        print(f"Health: {player_health} Stamina: {player_stamina} ")
+                        time.sleep(1)  
+                        continue
+
+                    if tutorial_boss_enemy_turn == Attack:
+                        tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
+                        tutorial_boss_enemy_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
+                        if tutorial_boss_turn_attack == Jab:
+                            if Tutorial_Boss.stamina >= 10:
+                                Tutorial_Boss.stamina -= 10
+                                print(f"And {Tutorial_Boss.name} tries for a jab! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Jab.damage
+                                    Tutorial_Boss.health -= Left_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Jab.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
+                                    Tutorial_Boss.health -= Left_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                            if Tutorial_Boss.stamina < 10:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                time.sleep(1)
+                                Tutorial_Boss.stamina + 20
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Left_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Straight:
+                            if Tutorial_Boss.stamina >= 30:
+                                Tutorial_Boss.stamina -= 30
+                                print(f"And {Tutorial_Boss.name} tries for a straight! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Straight.damage 
+                                    Tutorial_Boss.health -= Left_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Straight.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
+                                    Tutorial_Boss.health -= Jab.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 30:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Left_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Left_Hook:
+                            if Tutorial_Boss.stamina >= 15:
+                                Tutorial_Boss.stamina -= 15
+                                print(f"And {Tutorial_Boss.name} tries for a left hook! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Left_Hook.damage 
+                                    Tutorial_Boss.health -= Left_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Left_Hook.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")   
+                                    Tutorial_Boss.health -= Left_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                            if Tutorial_Boss.stamina < 45:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Left_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue     
+
+                        if tutorial_boss_turn_attack == Right_Hook:
+                            if Tutorial_Boss.stamina >= 45:
+                                Tutorial_Boss.stamina -= 45
+                                print(f"And {Tutorial_Boss.name} tries for a right hook! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Right_Hook.damage
+                                    Tutorial_Boss.health -= Left_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Right_Hook.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ") 
+                                    Tutorial_Boss.health -= Left_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 45:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Left_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue                                    
+
+                        if tutorial_boss_turn_attack == Right_Uppercut:
+                            if Tutorial_Boss.stamina >= 60:
+                                Tutorial_Boss.stamina -= 60
+                                print(f"And {Tutorial_Boss.name} tries for a right uppercut! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Right_Uppercut.damage
+                                    Tutorial_Boss.health -= Left_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Right_Uppercut.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")
+                                    Tutorial_Boss.health -= Left_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 60:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Left_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
                 if player_stamina < 15:
                     print("Sorry, you do not have enough stamina to perform this attack. ")
                     time.sleep(1)
@@ -321,13 +790,248 @@ def combat_system(player_health, player_stamina, player_story_name):
                     print(f"Health: {player_health} Stamina: {player_stamina} ")
                     continue
 
-            if attack_move == "Right Hook":
+            if attack_move == "4":
                 if player_stamina >= 45:
                     player_stamina -= 60
                     print(f"{player_story_name} goes for a beautiful right hook! ")
                     tutorial_boss_enemy_turn = random.choice(tutorial_boss_enemy_actions)
                     time.sleep(1)
-                
+
+                    if tutorial_boss_enemy_turn == Defend:
+                        print(f"But {player_story_name}'s punch was skillfully evaded by an excellent block from {Tutorial_Boss.name}! ")
+                        Tutorial_Boss.health = Tutorial_Boss.health
+                        print(f"Health: {player_health} Stamina: {player_stamina} ")
+                        time.sleep(1)  
+                        continue
+
+                    if tutorial_boss_enemy_turn == Attack:
+                        tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
+                        tutorial_boss_enemy_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
+                        if tutorial_boss_turn_attack == Jab:
+                            if Tutorial_Boss.stamina >= 10:
+                                Tutorial_Boss.stamina -= 10
+                                print(f"And {Tutorial_Boss.name} tries for a jab! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Jab.damage
+                                    Tutorial_Boss.health -= Right_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Jab.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
+                                    Tutorial_Boss.health -= Right_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                            if Tutorial_Boss.stamina < 10:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                time.sleep(1)
+                                Tutorial_Boss.stamina + 20
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Straight:
+                            if Tutorial_Boss.stamina >= 30:
+                                Tutorial_Boss.stamina -= 30
+                                print(f"And {Tutorial_Boss.name} tries for a straight! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Straight.damage 
+                                    Tutorial_Boss.health -= Right_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Straight.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
+                                    Tutorial_Boss.health -= Jab.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 30:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Left_Hook:
+                            if Tutorial_Boss.stamina >= 15:
+                                Tutorial_Boss.stamina -= 15
+                                print(f"And {Tutorial_Boss.name} tries for a left hook! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Left_Hook.damage 
+                                    Tutorial_Boss.health -= Right_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Left_Hook.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")   
+                                    Tutorial_Boss.health -= Right_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                            if Tutorial_Boss.stamina < 45:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue     
+
+                        if tutorial_boss_turn_attack == Right_Hook:
+                            if Tutorial_Boss.stamina >= 45:
+                                Tutorial_Boss.stamina -= 45
+                                print(f"And {Tutorial_Boss.name} tries for a right hook! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Right_Hook.damage
+                                    Tutorial_Boss.health -= Right_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Right_Hook.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ") 
+                                    Tutorial_Boss.health -= Right_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 45:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue                                    
+
+                        if tutorial_boss_turn_attack == Right_Uppercut:
+                            if Tutorial_Boss.stamina >= 60:
+                                Tutorial_Boss.stamina -= 60
+                                print(f"And {Tutorial_Boss.name} tries for a right uppercut! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Right_Uppercut.damage
+                                    Tutorial_Boss.health -= Right_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Right_Uppercut.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")
+                                    Tutorial_Boss.health -= Right_Hook.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 60:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Hook.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
                 if player_stamina < 45:
                     print("Sorry, you do not have enough stamina to perform this attack. ")
                     time.sleep(1)
@@ -336,13 +1040,248 @@ def combat_system(player_health, player_stamina, player_story_name):
                     print(f"Health: {player_health} Stamina: {player_stamina} ")
                     continue
 
-            if attack_move == "Right Uppercut":
+            if attack_move == "5":
                 if player_stamina >= 60:
                     player_stamina -= 60
                     print(f"{player_story_name} goes for a beautiful right uppercut! ")
                     tutorial_boss_enemy_turn = random.choice(tutorial_boss_enemy_actions)
-                    time.sleep(1)              
-                
+                    time.sleep(1)   
+
+                    if tutorial_boss_enemy_turn == Defend:
+                        print(f"But {player_story_name}'s punch was skillfully evaded by an excellent block from {Tutorial_Boss.name}! ")
+                        Tutorial_Boss.health = Tutorial_Boss.health
+                        print(f"Health: {player_health} Stamina: {player_stamina} ")
+                        time.sleep(1)  
+                        continue
+
+                    if tutorial_boss_enemy_turn == Attack:
+                        tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
+                        tutorial_boss_enemy_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
+                        if tutorial_boss_turn_attack == Jab:
+                            if Tutorial_Boss.stamina >= 10:
+                                Tutorial_Boss.stamina -= 10
+                                print(f"And {Tutorial_Boss.name} tries for a jab! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Jab.damage
+                                    Tutorial_Boss.health -= Right_Uppercut.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Jab.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
+                                    Tutorial_Boss.health -= Right_Uppercut.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                            if Tutorial_Boss.stamina < 10:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                time.sleep(1)
+                                Tutorial_Boss.stamina + 20
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Uppercut.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Straight:
+                            if Tutorial_Boss.stamina >= 30:
+                                Tutorial_Boss.stamina -= 30
+                                print(f"And {Tutorial_Boss.name} tries for a straight! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Straight.damage 
+                                    Tutorial_Boss.health -= Right_Uppercut.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Straight.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")  
+                                    Tutorial_Boss.health -= Jab.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 30:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Uppercut.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
+                        if tutorial_boss_turn_attack == Left_Hook:
+                            if Tutorial_Boss.stamina >= 15:
+                                Tutorial_Boss.stamina -= 15
+                                print(f"And {Tutorial_Boss.name} tries for a left hook! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Left_Hook.damage 
+                                    Tutorial_Boss.health -= Right_Uppercut.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Left_Hook.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")   
+                                    Tutorial_Boss.health -= Right_Uppercut.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")  
+                                    time.sleep(1)
+                                    continue
+
+                            if Tutorial_Boss.stamina < 45:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Uppercut.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue     
+
+                        if tutorial_boss_turn_attack == Right_Hook:
+                            if Tutorial_Boss.stamina >= 45:
+                                Tutorial_Boss.stamina -= 45
+                                print(f"And {Tutorial_Boss.name} tries for a right hook! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Right_Hook.damage
+                                    Tutorial_Boss.health -= Right_Uppercut.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Right_Hook.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ") 
+                                    Tutorial_Boss.health -= Right_Uppercut.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 45:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Uppercut.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue                                    
+
+                        if tutorial_boss_turn_attack == Right_Uppercut:
+                            if Tutorial_Boss.stamina >= 60:
+                                Tutorial_Boss.stamina -= 60
+                                print(f"And {Tutorial_Boss.name} tries for a right uppercut! ")
+                                time.sleep(1)
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Hit:
+                                    print(f"And we have a amazing spectalce! Both {player_story_name} and {Tutorial_Boss.name} hit each other at the same time! ")
+                                    player_health -= Right_Uppercut.damage
+                                    Tutorial_Boss.health -= Right_Uppercut.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Hit and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh! What a spectacle! Both competitiors crash into each other but {Tutorial_Boss.name}'s punch collides and {player_story_name}'s only misses by a large margain!")
+                                    player_health -= Right_Uppercut.damage
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                    time.sleep(1)  
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance == Miss and player_spontaneous_strike_chance == Hit:
+                                    print(f"Oh! What do we have here?! {player_story_name} and {Tutorial_Boss.name} have swung at each other at the same time! However, {player_story_name}'s punch collides hard with {Tutorial_Boss.name}'s face and {Tutorial_Boss.name} only misses his face by a few inches! ")
+                                    Tutorial_Boss.health -= Right_Uppercut.damage
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                                if tutorial_boss_enemy_spontaneous_strike_chance and player_spontaneous_strike_chance == Miss:
+                                    print(f"Oh what a spectacle! Both {player_story_name} and {Tutorial_Boss.name} strike at each other with an enormous amount of force but they both miss! This is sure one hell of a fight! ")
+                                    Tutorial_Boss.health = Tutorial_Boss.health
+                                    print(f"Health: {player_health} Stamina: {player_stamina} ") 
+                                    time.sleep(1) 
+                                    continue
+
+                            if Tutorial_Boss.stamina < 60:
+                                print(f"{Tutorial_Boss.name} has started to take a short break and let his guard down! ")
+                                Tutorial_Boss.stamina + 20
+                                time.sleep(1)
+                                print(f"{player_story_name} uses this chance and strikes {Tutorial_Boss.name} with an incredible jab to the face! ")
+                                Tutorial_Boss.health -= Right_Uppercut.damage
+                                print(f"Health: {player_health} Stamina: {player_stamina} ")
+                                time.sleep(1)
+                                continue
+
                 if player_stamina < 60:
                     print("Sorry, you do not have enough stamina to perform this attack. ")
                     time.sleep(1)

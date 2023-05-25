@@ -361,9 +361,7 @@ while True:
     if ready == "Y":
         print("Ready. Set. BOX! ")
         while player_health and Tutorial_Boss.health != 0:
-            player_turn = input("What do you want to do?  Choices: Attack/Defend/Rest ")
-            if player_turn == "Attack":
-                combat_system(player_health, player_stamina, player_story_name)
+            combat_system(player_health, player_stamina, player_story_name)
 
     if ready == "N":
         print("Thank you for playing our game! ")
