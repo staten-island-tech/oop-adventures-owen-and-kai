@@ -1,4 +1,4 @@
-import random
+mport random
 import time
 from attacks import Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut
 from defense import Block_Forward, Block_Side, Block_Down
