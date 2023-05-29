@@ -1,4 +1,4 @@
-mport random
+import random
 import time
 from attacks import Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut
 from defense import Block_Forward, Block_Side, Block_Down
@@ -24,6 +24,10 @@ player_technique = 5 + len(player_technique_points) * 1
 
 tutorial_boss_enemy_actions = [Attack, Attack, Attack, Defend]
 tutorial_boss_enemy_turn = random.choice(tutorial_boss_enemy_actions)
+
+if tutorial_boss_enemy_turn == Attack:
+    tutorial_boss_enemy_spontaneous_strike = [Hit, Miss, Miss, Miss]
+    tutorial_boss_enemy_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
 
 tutorial_boss_enemy_attack = [Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut]
 tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
@@ -529,7 +533,7 @@ def combat_system(player_health, player_stamina, player_story_name):
                                 continue
 
                 if player_stamina < 30:
-                    print("Sorry, you do not have enough stamina to perform this attack. ")
+                    print(f"{player_story_name} seems fatigued and doesn't have enough energy to perform his attack! ")
                     time.sleep(1)
                     print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
                     player_health -= 30
@@ -779,7 +783,7 @@ def combat_system(player_health, player_stamina, player_story_name):
                                 continue
 
                 if player_stamina < 15:
-                    print("Sorry, you do not have enough stamina to perform this attack. ")
+                    print(f"{player_story_name} seems fatigued and doesn't have enough energy to perform his attack! ")
                     time.sleep(1)
                     print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
                     player_health -= 30
@@ -788,7 +792,7 @@ def combat_system(player_health, player_stamina, player_story_name):
 
             if attack_move == "4":
                 if player_stamina >= 45:
-                    player_stamina -= 60
+                    player_stamina -= 45
                     print(f"{player_story_name} goes for a beautiful right hook! ")
                     tutorial_boss_enemy_turn = random.choice(tutorial_boss_enemy_actions)
                     time.sleep(1)
@@ -1029,7 +1033,7 @@ def combat_system(player_health, player_stamina, player_story_name):
                                 continue
 
                 if player_stamina < 45:
-                    print("Sorry, you do not have enough stamina to perform this attack. ")
+                    print(f"{player_story_name} seems fatigued and doesn't have enough energy to perform his attack! ")
                     time.sleep(1)
                     print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
                     player_health -= 30
@@ -1279,7 +1283,7 @@ def combat_system(player_health, player_stamina, player_story_name):
                                 continue
 
                 if player_stamina < 60:
-                    print("Sorry, you do not have enough stamina to perform this attack. ")
+                    print(f"{player_story_name} seems fatigued and doesn't have enough energy to perform his attack! ")
                     time.sleep(1)
                     print(f"Holy! {Tutorial_Boss.name} catches on to this and sends a tremendous body shot into {player_story_name}! That definitely looked like it broke something! ")
                     player_health -= 30
