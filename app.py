@@ -251,7 +251,7 @@ while True:
             print("That's not a choice kid... ")
             continue
 
-        if scene1_dialogue5 == "1. ":
+        if scene1_dialogue5 == "1":
             scene1_pt10 = input("Coach Wilson throws a pair of boxing gloves at your face which snaps you back to reality.  Choices: 1. Continue ")
 
         else:
@@ -274,6 +274,7 @@ while True:
 
         if scene1_pt11 == "1":
             print("You start to enter the ring... ")
+            time.sleep(1)
             break
 
     if scene1_dialogue_choice1 == "2":
@@ -360,8 +361,7 @@ while True:
     ready = input("Are you ready? Choices: Y/N ")
     if ready == "Y":
         print("Ready. Set. BOX! ")
-        while player_health and Tutorial_Boss.health != 0:
-            combat_system(player_health, player_stamina, player_story_name)
+        combat_system(player_health, player_stamina, player_story_name)
 
     if ready == "N":
         print("Thank you for playing our game! ")
