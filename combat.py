@@ -27,13 +27,13 @@ def combat_system(player_health, player_stamina, player_story_name):
     tutorial_boss_enemy_turn = random.choice(tutorial_boss_enemy_actions)
 
     tutorial_boss_enemy_spontaneous_strike = [Hit, Miss, Miss, Miss]
-    tutorial_boss_enemy_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
 
     tutorial_boss_enemy_attack = [Jab, Straight, Left_Hook, Right_Hook, Right_Uppercut]
     tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
 
     player_spontaneous_strike = [Hit, Miss, Miss, Miss]
     player_spontaneous_strike_chance = random.choice(player_spontaneous_strike)
+
     while player_health and Tutorial_Boss.health != 0:
         player_turn = input("What do you want to do?  Choices: 1. Attack/2. Defend/3. Rest ")
         if player_turn == "1":
@@ -54,6 +54,7 @@ def combat_system(player_health, player_stamina, player_story_name):
 
                     if tutorial_boss_enemy_turn == Attack:
                         tutorial_boss_turn_attack = random.choice(tutorial_boss_enemy_attack)
+                        tutorial_boss_enemy_spontaneous_strike_chance = random.choice(tutorial_boss_enemy_spontaneous_strike)
                         if tutorial_boss_turn_attack == Jab:
                             if Tutorial_Boss.stamina >= 10:
                                 Tutorial_Boss.stamina -= 10
