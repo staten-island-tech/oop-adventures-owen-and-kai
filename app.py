@@ -172,7 +172,7 @@ while True:
             continue
 
         if scene1_pt4 == "1":
-            scene1_pt5 = input("As you continue to destroy your bag, you take a glance at him from across the room. You see the coach firing him up as he fires some combos onto the bag. Two jabs followed by a striahgt and a hook. Easily one of the most basic combos in boxing and he manages to mess up on so many things. He forgets the pivot of his foot, the extending of his shoulders, and his form is terrible. The whole gym knows this, but no one can say anything as what makes him shine brighter than the rest of us, as the coach says, is his physique. 6 ft 1 weighing at 210 pounds of pure muscle, he was a tank to be reckoned with. Last person that ever fought him was sent to the hospital with multiple fractures all acrosss the body. After that, no one would even try to fight him in our area, so he's stuck with only punching a bag.  Choices: 1. Continue ")
+            scene1_pt5 = input("As you continue to destroy your bag, you take a glance at him from across the room. You see the coach firing him up as he fires some combos onto the bag. Two jabs followed by a striahgt and a hook. Easily one of the most basic combos in boxing and he manages to mess up on so many things. He forgets the pivot of his foot, the extending of his shoulders, and his form is terrible. The whole gym knows this, but no one can say anything as what makes him shine brighter than the rest of us, as the coach says, is his physique. 6 ft 1 weighing at 210 pounds of pure muscle, he was a tank to be reckoned with. Last person that ever fought him was sent to the hospital with multiple fractures all across the body. After that, no one would even try to fight him in our area, so he's stuck with only punching a bag.  Choices: 1. Continue ")
         
         else:
             print("That's not a choice kid... ")
@@ -252,7 +252,7 @@ while True:
             print("That's not a choice kid... ")
             continue
 
-        if scene1_dialogue5 == "1. ":
+        if scene1_dialogue5 == "1":
             scene1_pt10 = input("Coach Wilson throws a pair of boxing gloves at your face which snaps you back to reality.  Choices: 1. Continue ")
 
         else:
@@ -275,6 +275,7 @@ while True:
 
         if scene1_pt11 == "1":
             print("You start to enter the ring... ")
+            time.sleep(1)
             break
 
     if scene1_dialogue_choice1 == "2":
@@ -361,8 +362,7 @@ while True:
     ready = input("Are you ready? Choices: Y/N ")
     if ready == "Y":
         print("Ready. Set. BOX! ")
-        while player_health and Tutorial_Boss.health != 0:
-            combat_system(player_health, player_stamina, player_story_name)
+        combat_system(player_health, player_stamina, player_story_name)
 
     if ready == "N":
         print("Thank you for playing our game! ")
