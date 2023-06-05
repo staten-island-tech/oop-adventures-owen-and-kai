@@ -362,8 +362,8 @@ while True:
     ready = input("Are you ready? Choices: Y/N ")
     if ready == "Y":
         print("Ready. Set. BOX! ")
-<<<<<<< HEAD
         combat_system(player_health, player_stamina, player_story_name)
+<<<<<<< HEAD
 =======
         while player_health and Tutorial_Boss.health != 0:
             player_turn = input("What do you want to do?  Choices: Attack/Defend/Rest ")
@@ -720,6 +720,8 @@ while True:
                 print("That's not a choice kid... ")
                 continue
 >>>>>>> parent of b43ab8c (5/17/23 Resting Working?)
+=======
+>>>>>>> parent of d85ae04 (wufhgr)
 
     if ready == "N":
         print("Thank you for playing our game! ")
