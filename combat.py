@@ -1383,7 +1383,7 @@ def combat_system(player_health, player_stamina, player_story_name):
                             time.sleep(1)
                             continue                     
 
-            if defend_move == "Block Side":
+            if defend_move == "2":
                 print(f"{player_story_name} tries to block a punch to the side! ")
                 time.sleep(1)
                 if tutorial_boss_enemy_turn == Attack:
@@ -1391,7 +1391,6 @@ def combat_system(player_health, player_stamina, player_story_name):
                         if Tutorial_Boss.stamina >= 10:
                             Tutorial_Boss.stamina -= 10
                             print(f"{player_story_name} tries to block a punch to the side but {Tutorial_Boss.name} goes for a nose-breaking jab to the face! ")
-                            player_health -= Jab.damage
                             print(f"Health: {player_health} Stamina: {player_stamina} ")
                             time.sleep(1)
                             continue
@@ -1472,7 +1471,7 @@ def combat_system(player_health, player_stamina, player_story_name):
                             time.sleep(1)
                             continue 
 
-            if defend_move == "Block Down":
+            if defend_move == "3":
                 print(f"{player_story_name} tries to block a uppercut! ")
 
             else:
